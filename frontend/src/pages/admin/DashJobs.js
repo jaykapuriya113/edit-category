@@ -23,7 +23,6 @@ const DashJobs = () => {
   const { jobs } = useSelector((state) => state.adminCreateJob);
   const { loadJobs } = useSelector((state) => state.general);
 
-  console.log(loadJobs);
 
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");

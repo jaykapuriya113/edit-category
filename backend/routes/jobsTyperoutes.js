@@ -17,7 +17,7 @@ router.post("/type/create", isAuthenticated, createJobType);
 router.get("/type/jobs", allJobsType);
 
 // /api/type/update/type_id
-router.put("/type/update/:type_id", isAuthenticated, isAdmin, updateJobsType);
+router.patch("/type/update/:type_id", isAuthenticated, isAdmin, updateJobsType);
 
 // /api/type/delete/type_id
 router.delete(

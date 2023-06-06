@@ -146,7 +146,6 @@ export const editJobAction = (job_id, formdata, id) => async (dispatch) => {
   dispatch({ type: EDIT_JOB_REQUEST });
   try {
     const { data } = await axios.patch(`/api/job/update/${job_id}`, formdata);
-    console.log(data);
     dispatch({
       type: EDIT_JOB_SUCCESS,
       payload: data,

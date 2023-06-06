@@ -7,6 +7,9 @@ import {
   DELETE_JOB_TYPE_FAIL,
   DELETE_JOB_TYPE_REQUEST,
   DELETE_JOB_TYPE_SUCCESS,
+  EDIT_JOBTYPE_FAIL,
+  EDIT_JOBTYPE_REQUEST,
+  EDIT_JOBTYPE_SUCCESS,
   JOB_TYPE_LOAD_FAIL,
   JOB_TYPE_LOAD_REQUEST,
   JOB_TYPE_LOAD_SUCCESS,
@@ -66,5 +69,24 @@ export const deleteJobTypeAction = (type_id) => async (dispatch) => {
       payload: error.response.data.error,
     });
     toast.error(error.response.data.error);
+  }
+};
+
+//edit jobtype
+export const editJobAction = (type_id, formdata,) => async (dispatch) => {
+  dispatch({ type: EDIT_JOBTYPE_REQUEST });
+  try {
+    const { data } = await axios.patch(`/api/type/update/${type_id}`, formdata);
+    console.log(data);
+    dispatch({
+      type: EDIT_JOBTYPE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: EDIT_JOBTYPE_FAIL,
+      payload: error.response.data.error,
+    });
   }
 };

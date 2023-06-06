@@ -10,10 +10,15 @@ import {
 } from "../../redux/actions/jobTypeAction";
 
 import moment from "moment";
+import UpdateJobType from "./data/AdminEditCategory";
 
 const DashCategory = () => {
   const dispatch = useDispatch();
+  const [render, setRender] = React.useState(false);
 
+  const renderHandler = () => {
+    setRender(!render);
+  };
   useEffect(() => {
     dispatch(jobTypeLoadAction());
   }, []);
@@ -58,14 +63,7 @@ const DashCategory = () => {
             width: "170px",
           }}
         >
-          <Button variant="contained">
-            <Link
-              style={{ color: "white", textDecoration: "none" }}
-              to={`/admin/edit/user/${values.row._id}`}
-            >
-              Edit
-            </Link>
-          </Button>
+           <UpdateJobType jobData={values.row} renderHandler={renderHandler} />
           <Button
             onClick={(e) => deleteJobCategoryById(e, values.row._id)}
             variant="contained"
